@@ -1,0 +1,124 @@
+-DOMINIO DE LA APLICACIÓN-
+	->DETECCION DE INUNDACIONES
+
+-OBJETIVO-
+	->inundacion
+
+BASE DE HECHOS INICIAL:
+	[prediccion = tormenta]
+	[precipitaciones = fuertes]
+	[profundidad = 5]
+	[mes = mayo]
+	
+
+
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R12: SI mes = mayo ENTONCES estacion = humeda; Peso: 0
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R16: SI precipitaciones = fuertes ENTONCES cambio = subiendo; Peso: 2
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R18: SI profundidad >= 3 Y profundidad <= 5 ENTONCES nivel = normal; Peso: 1
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R22: SI prediccion = tormenta ENTONCES lluvia = fuerte; Peso: 3
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R22: SI prediccion = tormenta ENTONCES lluvia = fuerte; Peso: 3
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[mes = mayo]
+	[profundidad = 5]
+	[precipitaciones = fuertes]
+	[lluvia = fuerte]
+	[prediccion = tormenta]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	->Ninguna regla insertada en el conjunto conflicto
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R16: SI precipitaciones = fuertes ENTONCES cambio = subiendo; Peso: 2
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[cambio = subiendo]
+	[mes = mayo]
+	[profundidad = 5]
+	[precipitaciones = fuertes]
+	[lluvia = fuerte]
+	[prediccion = tormenta]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	->Ninguna regla insertada en el conjunto conflicto
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R18: SI profundidad >= 3 Y profundidad <= 5 ENTONCES nivel = normal; Peso: 1
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[cambio = subiendo]
+	[mes = mayo]
+	[profundidad = 5]
+	[precipitaciones = fuertes]
+	[nivel = normal]
+	[lluvia = fuerte]
+	[prediccion = tormenta]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R26: SI cambio = subiendo Y nivel = normal ENTONCES inundacion = no; Peso: 9
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R28: SI cambio = subiendo Y nivel = normal Y lluvia = fuerte ENTONCES inundacion = si; Peso: 10
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R28: SI cambio = subiendo Y nivel = normal Y lluvia = fuerte ENTONCES inundacion = si; Peso: 10
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[inundacion = si]
+	[cambio = subiendo]
+	[mes = mayo]
+	[profundidad = 5]
+	[precipitaciones = fuertes]
+	[nivel = normal]
+	[lluvia = fuerte]
+	[prediccion = tormenta]
+	
+Se ha encontrado solución tras aplicar las siguientes reglas: 
+	->R22: SI prediccion = tormenta ENTONCES lluvia = fuerte; Peso: 3
+	->R16: SI precipitaciones = fuertes ENTONCES cambio = subiendo; Peso: 2
+	->R18: SI profundidad >= 3 Y profundidad <= 5 ENTONCES nivel = normal; Peso: 1
+	->R28: SI cambio = subiendo Y nivel = normal Y lluvia = fuerte ENTONCES inundacion = si; Peso: 10
+Solucion inferida: inundacion = si

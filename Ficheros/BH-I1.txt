@@ -1,0 +1,4 @@
+3
+Profundidad = 1
+Mes = Julio
+Precipitaciones = Ninguna

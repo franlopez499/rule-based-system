@@ -1,0 +1,90 @@
+-DOMINIO DE LA APLICACIÓN-
+	->IDENTIFICACION DE FRUTAS
+
+-OBJETIVO-
+	->fruta
+
+BASE DE HECHOS INICIAL:
+	[nsemillas = 2]
+	[color = verde]
+	[diametro = 11]
+	[forma = redonda]
+	
+
+
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R1: SI nsemillas > 1 ENTONCES tiposemilla = multiple; Peso: 0
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R3: SI forma = redonda Y diametro >= 10 ENTONCES clasefrutal = emparrado; Peso: 0
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R1: SI nsemillas > 1 ENTONCES tiposemilla = multiple; Peso: 0
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[tiposemilla = multiple]
+	[forma = redonda]
+	[diametro = 11]
+	[color = verde]
+	[nsemillas = 2]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	->Ninguna regla insertada en el conjunto conflicto
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R3: SI forma = redonda Y diametro >= 10 ENTONCES clasefrutal = emparrado; Peso: 0
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[clasefrutal = emparrado]
+	[tiposemilla = multiple]
+	[forma = redonda]
+	[diametro = 11]
+	[color = verde]
+	[nsemillas = 2]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R8: SI clasefrutal = emparrado Y color = verde ENTONCES fruta = sandia; Peso: 10
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R8: SI clasefrutal = emparrado Y color = verde ENTONCES fruta = sandia; Peso: 10
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[clasefrutal = emparrado]
+	[fruta = sandia]
+	[tiposemilla = multiple]
+	[forma = redonda]
+	[diametro = 11]
+	[color = verde]
+	[nsemillas = 2]
+	
+Se ha encontrado solución tras aplicar las siguientes reglas: 
+	->R1: SI nsemillas > 1 ENTONCES tiposemilla = multiple; Peso: 0
+	->R3: SI forma = redonda Y diametro >= 10 ENTONCES clasefrutal = emparrado; Peso: 0
+	->R8: SI clasefrutal = emparrado Y color = verde ENTONCES fruta = sandia; Peso: 10
+Solucion inferida: fruta = sandia

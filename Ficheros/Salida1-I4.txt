@@ -1,0 +1,113 @@
+-DOMINIO DE LA APLICACIÓN-
+	->DETECCION DE INUNDACIONES
+
+-OBJETIVO-
+	->inundacion
+
+BASE DE HECHOS INICIAL:
+	[profundidad = 7]
+	[precipitaciones = fuertes]
+	[prediccion = tormenta]
+	
+
+
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R16: SI precipitaciones = fuertes ENTONCES cambio = subiendo; Peso: 2
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R19: SI profundidad > 5 ENTONCES nivel = alto; Peso: 1
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R22: SI prediccion = tormenta ENTONCES lluvia = fuerte; Peso: 3
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R22: SI prediccion = tormenta ENTONCES lluvia = fuerte; Peso: 3
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[lluvia = fuerte]
+	[profundidad = 7]
+	[precipitaciones = fuertes]
+	[prediccion = tormenta]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	->Ninguna regla insertada en el conjunto conflicto
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R16: SI precipitaciones = fuertes ENTONCES cambio = subiendo; Peso: 2
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[cambio = subiendo]
+	[precipitaciones = fuertes]
+	[profundidad = 7]
+	[prediccion = tormenta]
+	[lluvia = fuerte]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	->Ninguna regla insertada en el conjunto conflicto
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R19: SI profundidad > 5 ENTONCES nivel = alto; Peso: 1
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[cambio = subiendo]
+	[precipitaciones = fuertes]
+	[profundidad = 7]
+	[nivel = alto]
+	[prediccion = tormenta]
+	[lluvia = fuerte]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R32: SI cambio = subiendo Y nivel = alto Y lluvia = fuerte ENTONCES inundacion = si; Peso: 10
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R32: SI cambio = subiendo Y nivel = alto Y lluvia = fuerte ENTONCES inundacion = si; Peso: 10
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[inundacion = si]
+	[cambio = subiendo]
+	[precipitaciones = fuertes]
+	[profundidad = 7]
+	[nivel = alto]
+	[prediccion = tormenta]
+	[lluvia = fuerte]
+	
+Se ha encontrado solución tras aplicar las siguientes reglas: 
+	->R22: SI prediccion = tormenta ENTONCES lluvia = fuerte; Peso: 3
+	->R16: SI precipitaciones = fuertes ENTONCES cambio = subiendo; Peso: 2
+	->R19: SI profundidad > 5 ENTONCES nivel = alto; Peso: 1
+	->R32: SI cambio = subiendo Y nivel = alto Y lluvia = fuerte ENTONCES inundacion = si; Peso: 10
+Solucion inferida: inundacion = si

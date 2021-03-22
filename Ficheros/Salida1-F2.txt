@@ -1,0 +1,90 @@
+-DOMINIO DE LA APLICACIÓN-
+	->IDENTIFICACION DE FRUTAS
+
+-OBJETIVO-
+	->fruta
+
+BASE DE HECHOS INICIAL:
+	[nsemillas = 10]
+	[color = verde]
+	[forma = redonda]
+	[diametro = 8]
+	
+
+
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R1: SI nsemillas > 1 ENTONCES tiposemilla = multiple; Peso: 0
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R5: SI forma = redonda Y diametro < 10 ENTONCES clasefrutal = arbol; Peso: 0
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R1: SI nsemillas > 1 ENTONCES tiposemilla = multiple; Peso: 0
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[tiposemilla = multiple]
+	[diametro = 8]
+	[forma = redonda]
+	[color = verde]
+	[nsemillas = 10]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	->Ninguna regla insertada en el conjunto conflicto
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R5: SI forma = redonda Y diametro < 10 ENTONCES clasefrutal = arbol; Peso: 0
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[clasefrutal = arbol]
+	[tiposemilla = multiple]
+	[diametro = 8]
+	[forma = redonda]
+	[color = verde]
+	[nsemillas = 10]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R16: SI clasefrutal = arbol Y color = verde Y tiposemilla = multiple ENTONCES fruta = manzana; Peso: 10
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R16: SI clasefrutal = arbol Y color = verde Y tiposemilla = multiple ENTONCES fruta = manzana; Peso: 10
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[clasefrutal = arbol]
+	[fruta = manzana]
+	[tiposemilla = multiple]
+	[diametro = 8]
+	[forma = redonda]
+	[color = verde]
+	[nsemillas = 10]
+	
+Se ha encontrado solución tras aplicar las siguientes reglas: 
+	->R1: SI nsemillas > 1 ENTONCES tiposemilla = multiple; Peso: 0
+	->R5: SI forma = redonda Y diametro < 10 ENTONCES clasefrutal = arbol; Peso: 0
+	->R16: SI clasefrutal = arbol Y color = verde Y tiposemilla = multiple ENTONCES fruta = manzana; Peso: 10
+Solucion inferida: fruta = manzana

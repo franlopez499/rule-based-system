@@ -1,0 +1,11 @@
+-DOMINIO DE LA APLICACIÓN-
+	->IDENTIFICACION DE FRUTAS
+
+-OBJETIVO-
+	->fruta
+
+Se ha encontrado solución tras aplicar las siguientes reglas: 
+	->R1: SI nsemillas > 1 ENTONCES tiposemilla = multiple; Peso: 0
+	->R5: SI forma = redonda Y diametro < 10 ENTONCES clasefrutal = arbol; Peso: 0
+	->R16: SI clasefrutal = arbol Y color = verde Y tiposemilla = multiple ENTONCES fruta = manzana; Peso: 10
+Solucion inferida: fruta = manzana

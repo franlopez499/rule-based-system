@@ -1,0 +1,12 @@
+-DOMINIO DE LA APLICACIÓN-
+	->DETECCION DE INUNDACIONES
+
+-OBJETIVO-
+	->inundacion
+
+Se ha encontrado solución tras aplicar las siguientes reglas: 
+	->R22: SI prediccion = tormenta ENTONCES lluvia = fuerte; Peso: 3
+	->R16: SI precipitaciones = fuertes ENTONCES cambio = subiendo; Peso: 2
+	->R18: SI profundidad >= 3 Y profundidad <= 5 ENTONCES nivel = normal; Peso: 1
+	->R28: SI cambio = subiendo Y nivel = normal Y lluvia = fuerte ENTONCES inundacion = si; Peso: 10
+Solucion inferida: inundacion = si

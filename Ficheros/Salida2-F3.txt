@@ -1,0 +1,11 @@
+-DOMINIO DE LA APLICACIÓN-
+	->IDENTIFICACION DE FRUTAS
+
+-OBJETIVO-
+	->fruta
+
+Se ha encontrado solución tras aplicar las siguientes reglas: 
+	->R1: SI nsemillas > 1 ENTONCES tiposemilla = multiple; Peso: 0
+	->R3: SI forma = redonda Y diametro >= 10 ENTONCES clasefrutal = emparrado; Peso: 0
+	->R8: SI clasefrutal = emparrado Y color = verde ENTONCES fruta = sandia; Peso: 10
+Solucion inferida: fruta = sandia

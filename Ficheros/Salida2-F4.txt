@@ -1,0 +1,11 @@
+-DOMINIO DE LA APLICACIÓN-
+	->IDENTIFICACION DE FRUTAS
+
+-OBJETIVO-
+	->fruta
+
+Se ha encontrado solución tras aplicar las siguientes reglas: 
+	->R5: SI forma = redonda Y diametro < 10 ENTONCES clasefrutal = arbol; Peso: 0
+	->R6: SI nsemillas = 1 ENTONCES tiposemilla = hueso; Peso: 0
+	->R11: SI clasefrutal = arbol Y color = naranja Y tiposemilla = hueso ENTONCES fruta = albaricoque; Peso: 10
+Solucion inferida: fruta = albaricoque

@@ -1,0 +1,94 @@
+-DOMINIO DE LA APLICACIÓN-
+	->IDENTIFICACION DE FRUTAS
+
+-OBJETIVO-
+	->fruta
+
+BASE DE HECHOS INICIAL:
+	[diametro = 6]
+	[clasefrutal = arbol]
+	[color = naranja]
+	[forma = redonda]
+	[nsemillas = 1]
+	
+
+
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R5: SI forma = redonda Y diametro < 10 ENTONCES clasefrutal = arbol; Peso: 0
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R6: SI nsemillas = 1 ENTONCES tiposemilla = hueso; Peso: 0
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R5: SI forma = redonda Y diametro < 10 ENTONCES clasefrutal = arbol; Peso: 0
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[diametro = 6]
+	[clasefrutal = arbol]
+	[color = naranja]
+	[forma = redonda]
+	[nsemillas = 1]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	->Ninguna regla insertada en el conjunto conflicto
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R6: SI nsemillas = 1 ENTONCES tiposemilla = hueso; Peso: 0
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[tiposemilla = hueso]
+	[diametro = 6]
+	[clasefrutal = arbol]
+	[color = naranja]
+	[forma = redonda]
+	[nsemillas = 1]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R11: SI clasefrutal = arbol Y color = naranja Y tiposemilla = hueso ENTONCES fruta = albaricoque; Peso: 10
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R17: SI clasefrutal = arbol Y color = naranja Y tiposemilla = hueso ENTONCES fruta = melocoton; Peso: 10
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R11: SI clasefrutal = arbol Y color = naranja Y tiposemilla = hueso ENTONCES fruta = albaricoque; Peso: 10
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[fruta = albaricoque]
+	[tiposemilla = hueso]
+	[diametro = 6]
+	[clasefrutal = arbol]
+	[color = naranja]
+	[forma = redonda]
+	[nsemillas = 1]
+	
+Se ha encontrado solución tras aplicar las siguientes reglas: 
+	->R5: SI forma = redonda Y diametro < 10 ENTONCES clasefrutal = arbol; Peso: 0
+	->R6: SI nsemillas = 1 ENTONCES tiposemilla = hueso; Peso: 0
+	->R11: SI clasefrutal = arbol Y color = naranja Y tiposemilla = hueso ENTONCES fruta = albaricoque; Peso: 10
+Solucion inferida: fruta = albaricoque

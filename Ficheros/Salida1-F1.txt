@@ -1,0 +1,90 @@
+-DOMINIO DE LA APLICACIÓN-
+	->IDENTIFICACION DE FRUTAS
+
+-OBJETIVO-
+	->fruta
+
+BASE DE HECHOS INICIAL:
+	[nsemillas = 1]
+	[color = rojo]
+	[forma = redonda]
+	[diametro = 3]
+	
+
+
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R5: SI forma = redonda Y diametro < 10 ENTONCES clasefrutal = arbol; Peso: 0
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R6: SI nsemillas = 1 ENTONCES tiposemilla = hueso; Peso: 0
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R5: SI forma = redonda Y diametro < 10 ENTONCES clasefrutal = arbol; Peso: 0
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[clasefrutal = arbol]
+	[diametro = 3]
+	[forma = redonda]
+	[color = rojo]
+	[nsemillas = 1]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	->Ninguna regla insertada en el conjunto conflicto
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R6: SI nsemillas = 1 ENTONCES tiposemilla = hueso; Peso: 0
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[tiposemilla = hueso]
+	[clasefrutal = arbol]
+	[diametro = 3]
+	[forma = redonda]
+	[color = rojo]
+	[nsemillas = 1]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R13: SI clasefrutal = arbol Y color = rojo Y tiposemilla = hueso ENTONCES fruta = cereza; Peso: 10
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R13: SI clasefrutal = arbol Y color = rojo Y tiposemilla = hueso ENTONCES fruta = cereza; Peso: 10
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[fruta = cereza]
+	[tiposemilla = hueso]
+	[clasefrutal = arbol]
+	[diametro = 3]
+	[forma = redonda]
+	[color = rojo]
+	[nsemillas = 1]
+	
+Se ha encontrado solución tras aplicar las siguientes reglas: 
+	->R5: SI forma = redonda Y diametro < 10 ENTONCES clasefrutal = arbol; Peso: 0
+	->R6: SI nsemillas = 1 ENTONCES tiposemilla = hueso; Peso: 0
+	->R13: SI clasefrutal = arbol Y color = rojo Y tiposemilla = hueso ENTONCES fruta = cereza; Peso: 10
+Solucion inferida: fruta = cereza

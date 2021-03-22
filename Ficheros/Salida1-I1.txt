@@ -1,0 +1,63 @@
+-DOMINIO DE LA APLICACIÓN-
+	->DETECCION DE INUNDACIONES
+
+-OBJETIVO-
+	->inundacion
+
+BASE DE HECHOS INICIAL:
+	[precipitaciones = ninguna]
+	[mes = julio]
+	[profundidad = 1]
+	
+
+
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R2: SI mes = julio ENTONCES estacion = seca; Peso: 0
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R17: SI profundidad < 3 ENTONCES nivel = bajo; Peso: 1
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R17: SI profundidad < 3 ENTONCES nivel = bajo; Peso: 1
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[nivel = bajo]
+	[precipitaciones = ninguna]
+	[mes = julio]
+	[profundidad = 1]
+	
+-FASE DE EQUIPARACION-CONJUNTO CONFLICTO-
+
+	SE INSERTA EN EL CONJUNTO CONFLICTO: 
+	->R23: SI nivel = bajo ENTONCES inundacion = no; Peso: 8
+
+-FIN FASE EQUIPARACION-CONJUNTO CONFLICTO-
+
+-FASE RESOLVER-
+
+-Regla disparada-
+	->R23: SI nivel = bajo ENTONCES inundacion = no; Peso: 8
+
+
+-FIN FASE RESOLVER-
+
+BASE DE HECHOS ACTUALIZADA:
+	[inundacion = no]
+	[profundidad = 1]
+	[mes = julio]
+	[precipitaciones = ninguna]
+	[nivel = bajo]
+	
+Se ha encontrado solución tras aplicar las siguientes reglas: 
+	->R17: SI profundidad < 3 ENTONCES nivel = bajo; Peso: 1
+	->R23: SI nivel = bajo ENTONCES inundacion = no; Peso: 8
+Solucion inferida: inundacion = no

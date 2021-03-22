@@ -1,0 +1,10 @@
+-DOMINIO DE LA APLICACIÓN-
+	->DETECCION DE INUNDACIONES
+
+-OBJETIVO-
+	->inundacion
+
+Se ha encontrado solución tras aplicar las siguientes reglas: 
+	->R17: SI profundidad < 3 ENTONCES nivel = bajo; Peso: 1
+	->R23: SI nivel = bajo ENTONCES inundacion = no; Peso: 8
+Solucion inferida: inundacion = no
